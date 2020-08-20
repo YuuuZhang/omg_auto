@@ -8,7 +8,6 @@ class BasePage:
     sign_button = (By.CSS_SELECTOR, 'span[class="submit"]')
     simple_button = (By.CSS_SELECTOR, 'span.fxs-button-text')
     yes_button = (By.CSS_SELECTOR, 'input[value="Yes"]')
-    click_verify_button = (By.CSS_SELECTOR, 'a[class="actionLink"]')
     click_signin_button = (By.CSS_SELECTOR, 'p[class="normalText"]')
     header_title = (By.CSS_SELECTOR, 'header.fxs-home-title')
     option = (By.CSS_SELECTOR, 'span.fxs-portal-svg')
@@ -19,6 +18,5 @@ class BasePage:
     delete_button = (By.CSS_SELECTOR, 'li[title="Delete"]')
     blade_title = (By.CSS_SELECTOR, 'div.fxs-blade-title-content')
     progress_dots = (By.CSS_SELECTOR, 'fxs-progress-dots-dot')
-
-
-
+    click_verify_button = (By.ID, 'WindowsAzureMultiFactorAuthentication')
+    check_login_result = ('//div[@id="mectrl_currentAccount_secondary"]')

@@ -36,6 +36,11 @@ class BaseWebPage(object):
             if text in element.text:
                 return element
 
+    def find_element_by_xpath(self, loc):
+        logging.info('通过 Xpath: %s 查找元素' % loc)
+        element = self.driver.find_element_by_xpath(loc)
+        return element
+
     def click(self, loc):
         element = self.find_element(*loc)
         element.click()
@@ -159,8 +164,3 @@ class BaseWebPage(object):
 
     def scroll_into_view(self, element):
         self.driver.execute_script("arguments[0].scrollIntoView();", element)
-
-
-
-
-

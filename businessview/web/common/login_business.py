@@ -3,6 +3,9 @@
 from baseview.web.base_web import BaseWebPage
 from page.web.login_page import LoginPage as Page
 from utilstest.base_yaml import Yaml
+import time
+import pyautogui
+import logging
 
 
 class LoginBusiness(BaseWebPage):
@@ -18,12 +21,18 @@ class LoginBusiness(BaseWebPage):
     def login(self, user_name=username, password=password):
         self.send_keys(self._page.user_name_input, user_name)
         self.click(self._page.next_button)
-        self.find_element_click(self._page.click_signin_button, 'Sign in with a username and password instead')
-        self.send_keys(self._page.password_input, password)
-        self.find_element_click(self._page.sign_button, 'Sign in')
-        self.find_element_click(self._page.click_verify_button, 'Sign in with your phone or token device')
-        self.click(self._page.yes_button)
-
+        time.sleep(5)
+        pyautogui.typewrite(message=user_name)
+        pyautogui.press('tab')
+        pyautogui.typewrite(message=password)
+        pyautogui.press('Enter')
+        self.click(self._page.click_verify_button)
+        getTotal = self.find_element_by_xpath(self._page.check_login_result)
+        try:
+            assert getTotal.get_attribute("textContent") == user_name
+            logging.info('login success.')
+        except Exception as e:
+            logging.info('Assertion test fail.')
 
 
 
